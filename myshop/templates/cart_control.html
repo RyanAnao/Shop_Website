@@ -1,0 +1,37 @@
+<!-- cart_control.html -->
+<div id="cart-control-container">
+    <!-- Control Row -->
+    <div id="control-row">
+        <!-- Shopping Cart Section -->
+        <div id="cart-control">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items">
+                <!-- Cart Items will be dynamically added using JavaScript -->
+            </ul>
+            <h4 class="cart-total"><span class="text-muted">Total:</span> $<span id="cart-total">0.00</span></h4>
+            <a href="{% url 'orders:create_order' %}" class="checkout-btn">Checkout</a>
+        </div>
+
+        <!-- User Profile Section -->
+        <div id="user-profile">
+            {% if request.user.is_authenticated %}
+            <!-- User Profile Dropdown -->
+            <div class="dropdown">
+                <button class="dropdown-toggle">Management</button>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'cart:show_cart' %}">Cart</a></li>
+                    <li><a href="{% url 'orders:user_orders' %}">Orders</a></li>
+                    <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
+                    <li><a href="{% url 'accounts:user_logout' %}" class="text-danger">Log out</a></li>
+                </ul>
+            </div>
+            {% else %}
+            <!-- Login and Sign-up Buttons -->
+            <div class="auth-buttons">
+                <a href="{% url 'accounts:user_login' %}" class="btn-login">Login</a>
+                <a href="{% url 'accounts:user_register' %}" class="btn-signup">Sign-up</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

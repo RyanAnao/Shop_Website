@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if orders %}
+{% for order in orders %}
+<div class="order-container">
+    <b class="order-id">Order Id: {{ order.order_id }}</b>
+    {% if order.status %}
+        <h4><b class="order-status success">Successful</b></h4>
+    {% else %}
+        <h3><b class="order-status danger">Cancelled</b></h3>
+    {% endif %}
+    <div class="order-divider"></div>
+    {% for item in order.items.all %}
+    <div class="order-item">
+        <p>Product: <a class="product-link" href="{{ item.product.get_absolute_url }}">{{ item.product.name }}</a></p>
+        <p>Price: ${{ item.price }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Digest: {{ item.digest }}</p>
+    </div>
+    {% endfor %}
+    <b class="order-total">Total price: ${{ order.get_total_price }}</b>
+</div>
+{% endfor %}
+{% else %}
+<div class="empty-orders">
+    <h3 class="empty-message">Orders list is empty..!</h3>
+    <a href="/" class="back-link">Back</a>
+</div>
+{% endif %}
+{% endblock %}

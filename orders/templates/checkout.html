@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="spacer"></div>
+    <div class="checkout-container">
+        <h3 class="order-summary">Your Order Amount is: ${{order.get_total_price}}</h3>
+        <hr>
+        <p class="confirmation-text"><b>Do you want to continue and pay?</b></p>
+        <a href="{% url 'cart:show_cart' %}" class="custom-btn back-btn">Back To Cart</a>
+        <!-- <a href="{% url 'orders:create_order' %}" class="custom-btn pay-btn">Continue and pay</a> -->
+        <button id="pre-pay-btn" class="custom-btn pay-btn">Continue and pay</button>
+    </div>
+<div class="spacer"></div>
+{% endblock %}
+

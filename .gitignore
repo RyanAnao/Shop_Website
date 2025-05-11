@@ -1,0 +1,84 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+conf/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Node/npm
+node_modules/
+npm-debug.log*
+
+# Database
+*.dump
+*.backup
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# PyCharm
+.idea/
+*.iml
+
+# Virtual environment
+venv/
+ENV/
+
+# Python packaging
+*.egg-info/
+dist/
+build/
+
+# Celery
+celerybeat-schedule.*
+
+# PyInstaller
+*.spec
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Vim
+*.swp
+*.swo
+*~
+
+# System Files
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini

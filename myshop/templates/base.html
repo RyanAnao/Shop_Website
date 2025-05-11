@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Website</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        {% include 'cart_control.html' %}
+        <nav>
+            <ul id="breadcrumb">
+                <!-- Breadcrumb will be dynamically added using JavaScript -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <aside class="category-list">
+            <h3>Category List</h3>
+            <ul>
+                <!-- Categories will be dynamically added using JavaScript -->
+            </ul>
+        </aside>
+
+        <div class="message-list">
+          <!-- messages -->
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+          <!-- content -->
+          {% block content %}{% endblock %}
+        </div>
+    </main>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

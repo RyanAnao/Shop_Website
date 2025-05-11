@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>{{title}}</title>
+</head>
+<body>
+    <div class="container">
+        <div class="spacer"></div>
+        <div class="content-wrapper">
+            <!-- content -->
+            <div class="main-content">
+                <h2 class="page-title">{{ title }}</h2>
+                <div class="content-box">
+                    <!-- messages -->
+                    {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+            <!-- sidebar -->
+            <div class="sidebar">
+                <h3 class="menu-title">Menu</h3>
+                <a class="menu-link" href="{% url 'dashboard:categories' %}">
+                    <li class="menu-item">Categories</li>
+                </a>
+                <a class="menu-link" href="{% url 'dashboard:products' %}">
+                    <li class="menu-item">Products</li>
+                </a>
+                <a class="menu-link" href="{% url 'dashboard:add_product' %}">
+                    <li class="menu-item">Add New Product</li>
+                </a>
+                <a class="menu-link" href="{% url 'dashboard:add_category' %}">
+                    <li class="menu-item">Add New Category</li>
+                </a>
+                <a class="menu-link" href="{% url 'dashboard:orders' %}">
+                    <li class="menu-item">Orders</li>
+                </a>
+                <hr>
+                <a class="menu-link" href="{% url 'shop:main' %}">
+                    <li class="menu-item primary">Back To shop</li>
+                </a>
+                <a class="menu-link" href="{% url 'accounts:user_logout' %}">
+                    <li class="menu-item danger">Logout</li>
+                </a>
+                <div class="user-info">You logged in as: {{ request.user.email }}</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

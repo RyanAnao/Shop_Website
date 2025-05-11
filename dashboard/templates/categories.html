@@ -1,0 +1,25 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+
+<table class="categories-table">
+    <thead class="categories-table-header">
+        <tr>
+            <th scope="col">n</th>
+            <th scope="col">name</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    {% for category in categories %}
+    <tbody>
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ category.name }}</td>
+        <td><a class="delete-link" href="{% url 'dashboard:delete_category' category.catid %}">Delete</a></td>
+        <td><a class="edit-link" href="{% url 'dashboard:edit_category' category.catid %}">Edit</a></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock %}

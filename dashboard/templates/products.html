@@ -1,0 +1,35 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+
+<table class="products-table">
+    <thead class="products-table-header">
+        <tr>
+            <th scope="col">n</th>
+            <th scope="col">name</th>
+            <th scope="col">price</th>
+            <th scope="col">catid</th>
+            <th scope="col">thumbnail</th>
+            <th scope="col">create_date</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    {% for product in products %}
+    <tbody>
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td><a class="product-link" href="{{ product.get_absolute_url }}">{{ product.name }}</a></td>
+        <td>${{ product.price }}</td>
+        <td>{{ product.catid }}</td>
+        <td>
+          <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" class="thumbnail-img" style="max-width: 50px; max-height: 50px;">
+        </td>
+        <td>{{ product.date_created|date:"M d" }}</td>
+        <td><a class="delete-link" href="{% url 'dashboard:delete_product' product.pid %}">Delete</a></td>
+        <td><a class="edit-link" href="{% url 'dashboard:edit_product' product.pid %}">Edit</a></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock %}

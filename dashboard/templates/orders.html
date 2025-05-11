@@ -1,0 +1,34 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<table class="orders-table">
+    <thead class="orders-table-header">
+      <tr>
+        <th>#</th>
+        <th>User</th>
+        <th>Id</th>
+        <th>Total Price</th>
+        <th>Status</th>
+        <th>Digest</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    {% for order in orders %}
+    <tbody>
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ order.user.full_name }}</td>
+        <td>{{ order.order_id }}</td>
+        <td>${{ order.get_total_price }}</td>
+        {% if order.status %}
+            <td class="order-status success">Successful</td>
+        {% else %}
+            <td class="order-status danger">Canceled</td>
+        {% endif %}
+        <td>{{ order.digest }}</td>
+        <td><a href="{% url 'dashboard:order_detail' order.oid %}" class="order-detail-link">Detail</a></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock %}
+

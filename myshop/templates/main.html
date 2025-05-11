@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if products %}
+<div class="product-grid">
+    {% for product in products.object_list %}
+    <div class="card">
+        <img class="card-img" src="{{ product.thumbnail.url }}" alt="{{ product.name }}">
+        <div class="card-content">
+            <h5 class="card-name">{{ product.name }}</h5>
+            <p class="card-price">${{ product.price }}</p>
+            <button 
+                class="btn-add-to-cart" 
+                data-id="{{ product.id }}" 
+                data-name="{{ product.name }}" 
+                data-price="{{ product.price }}">
+                Add to Cart
+            </button>
+            <a href="{{ product.get_absolute_url }}" class="btn-buy">Buy Now</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Pagination -->
+<div class="pagination-container">
+    <ul class="pagination">
+        {% if products.has_previous %}
+        <li><a href="?page={{ products.previous_page_number }}">Previous</a></li>
+        <li><a href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}</a></li>
+        {% endif %}
+        <li><a href="?page={{ products.number }}">{{ products.number }}</a></li>
+        {% if products.has_next %}
+        <li><a href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a></li>
+        <li><a href="?page={{ products.next_page_number }}">Next</a></li>
+        {% endif %}
+    </ul>
+</div>
+{% else %}
+<div class="no-products">
+    <h3>No Products..!</h3>
+</div>
+{% endif %}
+{% endblock %}
+

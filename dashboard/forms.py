@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.core.exceptions import ValidationError
 
-from shop.models import Product, Category
+from myshop.models import Product, Category
 
 
 class AddCategoryForm(ModelForm):

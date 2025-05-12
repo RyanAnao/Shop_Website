@@ -39,9 +39,9 @@ def filter_by_category(request, category_slug):
     paginator = Paginator(products_all, 20)
     page_number = request.GET.get('page')
     products = paginator.get_page(page_number)
-    return render(request, 'shop/category.html', {'category': category, 'products': products})
+    return render(request, 'myshop/category.html', {'category': category, 'products': products})
 
 def product_detail(request, category_slug, product_slug):
     category = get_object_or_404(Category, slug=category_slug)
     product = get_object_or_404(Product, slug=product_slug, catid=category)
-    return render(request, 'shop/product_detail.html', {'category': category, 'product': product})
+    return render(request, 'myshop/product_detail.html', {'category': category, 'product': product})

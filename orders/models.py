@@ -4,7 +4,7 @@ import string
 from django.db import models
 
 from accounts.models import User
-from shop.models import Product
+from myshop.models import Product
 
 
 class Order(models.Model):
@@ -19,7 +19,7 @@ class Order(models.Model):
     total_price = models.IntegerField()
     merchant_email = models.CharField(max_length=100)
     salt = models.CharField(max_length=10)
-    items = models.JSONField(default=dict, blank=True, null=True)
+    items_json = models.JSONField(default=dict, blank=True, null=True)
     transaction_id = models.CharField(max_length=100)
 
     class Meta:

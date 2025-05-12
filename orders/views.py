@@ -71,7 +71,7 @@ def update_order(request, oid):
             order.currency = currency
             order.merchant_email = merchant_email
             order.salt = salt
-            order.items = items
+            order.items_json = items
             order.total_price = total_price
             order.digest = digest
             order.save()

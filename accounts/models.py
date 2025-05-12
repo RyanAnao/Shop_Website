@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 
 from .managers import UserManager
-from shop.models import Product
+from myshop.models import Product
 
 
 class User(AbstractBaseUser):

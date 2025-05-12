@@ -23,12 +23,6 @@
     <a href="{% url 'orders:create_order' %}" class="checkout-btn">Checkout</a>
     <h4 class="cart-total"><span class="text-muted">Total:</span> $<span id="cart-total">0.00</span></h4>
 </div>
-{% else %}
-<div class="empty-cart">
-    <h3 class="empty-message">Cart is empty..!</h3>
-    <a href="/" class="back-link">Back</a>
-</div>
-{% endif %}
 <div class="spacer"></div>
 {% endblock %}
 

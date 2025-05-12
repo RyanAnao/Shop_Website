@@ -30,7 +30,7 @@ ALLOWED_HOSTS = [ '*' ]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
 
@@ -42,14 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'accounts.apps.AccountsConfig',
-    'cart.apps.CartConfig',
-    'orders.apps.OrdersConfig',
-    'myshop.apps.ShopConfig',
-    'dashboard.apps.DashboardConfig',
+    'accounts',
+    'cart',
+    'orders',
+    'myshop',
+    'dashboard',
     'rest_framework',
     'corsheaders',
-    'users',
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True
@@ -147,7 +146,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

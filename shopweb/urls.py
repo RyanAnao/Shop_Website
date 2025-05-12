@@ -28,7 +28,6 @@ router.register(r'categories', CategoryViewSet)
 router.register(r'products', ProductViewSet)
 
 urlpatterns = [
-    path('', include('myshop.urls')),
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
 
@@ -36,6 +35,7 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace='cart')),
     path('orders/', include('orders.urls', namespace='orders')),
     path('dashboard/', include('dashboard.urls', namespace='dashboard')),
+    path('', include('myshop.urls')),
 ]
 
 if settings.DEBUG:
